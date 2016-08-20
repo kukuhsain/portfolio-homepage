@@ -1,0 +1,94 @@
+//
+// Cards
+// --------------------------------------------------
+
+$card-padding: $panel-body-padding;
+$card-inner-padding: 5px;
+$card-bg: $panel-bg;
+$card-border: $panel-inner-border;
+$card-border-radius: $panel-border-radius;
+
+$card-caption-padding: $thumbnail-caption-padding;
+$card-caption-color: $thumbnail-caption-color;
+
+
+// Mixin and adjust the regular image class
+.card {
+  display: block;
+  padding: $card-padding;
+  margin-bottom: $line-height-computed;
+  line-height: $line-height-base;
+  background-color: $card-bg;
+  border-radius: $card-border-radius;
+  border: none;
+  border-radius: 2px;
+  @include box-shadow(0 1px 4px rgba(0,0,0,.3));
+
+  >.card-head {
+    width: 100%;
+    padding: $card-inner-padding;
+    // padding-bottom: $card-padding;
+
+    >.person-photo {
+      display: inline-block;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+      width: 50px;
+      height: 50px;
+      // float: left;
+      // vertical-align: top;
+
+      >img {
+        display: block;
+        margin: auto;
+        max-width: 100%;
+      }
+    }
+
+    >.person-info {
+      display: inline-block;
+      vertical-align: top;
+      >.title {
+        padding-left: $card-padding;
+        margin: 0;
+      }
+      >.desc {
+        padding-left: $card-padding;
+      }
+    }
+
+    >.person-action-right {
+      display: inline-block;
+      vertical-align: top;
+      // text-align: right;
+      float: right;
+    }
+
+  }
+
+  >.card-body {
+    > img,
+    a > img {
+      @include img-responsive;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    // [converter] extracted a&:hover, a&:focus, a&.active to a.thumbnail:hover, a.thumbnail:focus, a.thumbnail.active
+
+    // Image captions
+    .caption {
+      padding: $card-inner-padding;
+      color: $thumbnail-caption-color;
+
+      .caption-heading {
+        display: inline-block;
+      }
+
+      .caption-action-right {
+        float: right;
+      }
+    }
+  }
+}
