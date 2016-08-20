@@ -1,0 +1,47 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          <img class="img-brand" alt="Brand" src="/statics/images/blue-person.png">
+        </a>
+      </div>
+      <div class="navbar-right">
+        <a href="/login"><button type="button" class="btn btn-default navbar-btn"><strong>LOGIN</strong></button></a>
+        <!-- <p><a href="#">Mark Otto</a></p> -->
+      </div>
+    </div>
+  </nav>
+
+  {% block content %}
+  {% endblock %}
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <!-- Logo -->
+        <div class="col-sm-3">
+          <img class="center-block" src="/statics/images/red-person.png">
+        </div>
+        <!-- Address -->
+        <div class="col-sm-5">
+          <h3>Title footer</h3>
+          <h4>Subtitle footer</h4>
+          <p>Description footer</p>
+        </div>
+        <div class="col-sm-4">
+          <br>
+          {% for link_name in config_data.link_names %}
+          <p><a class="footer-links" href="{{config_data.link_urls[loop.index-1]}}">{{link_name}}</a></p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

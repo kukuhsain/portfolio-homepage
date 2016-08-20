@@ -1,0 +1,176 @@
+{% extends "base/base_header_footer.html" %}
+
+{% block content %}
+
+<!-- Jumbotron -->
+    <div class="jumbotron" style="background-image: url('/image/config?coverimg=true');">
+      <div class="background-overlay">
+        <div class="container">
+          <h1 class="title">{{config_data.title}}</h1>
+          <p>{{config_data.tagline}}</p>
+        </div>
+      </div>
+
+      <!-- <h1>Hello, world!</h1> -->
+      <!-- <img src="/statics/images/big-landscape.png"> -->
+    </div>
+
+    <!-- Links -->
+    <div class="tabs">
+      <div class="container">
+        <ul class="nav nav-tabs nav-justified">
+          <li role="navigation"><a href="/dosen"><!-- <span class="glyphicon glyphicon-bishop"></span> --> Dosen</a></li>
+          <li role="navigation"><a href="/mahasiswa"><!-- <span class="glyphicon glyphicon-pawn"></span> --> Mahasiswa</a></li>
+          <li role="navigation"><a href="/matakuliah"><!-- <span class="glyphicon glyphicon-education"></span> --> Mata Kuliah</a></li>
+          <li role="navigation"><a href="/laboratorium"><!-- <span class="glyphicon glyphicon-lamp"></span> --> Laboratorium</a></li>
+          <li role="navigation"><a href="/jurnal"><!-- <span class="glyphicon glyphicon-book"></span> --> Jurnal</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Content -->
+    <div class="container">
+      <div class="row">
+        <!-- column 1 -->
+        <div class="col-sm-4">
+          <h3 class="column-heading">Pengumuman</h3>
+          <div class="panel">
+            <!-- List group -->
+            <ul class="list-group">
+              {% for pengumuman in pengumuman_data %}
+              <li class="list-group-item">
+                <h5 class="list-group-item-heading">{{pengumuman.content}}</h5>
+                <p class="list-group-item-text">Diumumkan pada {{pengumuman.created_date.strftime('%B %d, %Y')}}</p>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <!-- Lihat selengkapnya -->
+          <nav>
+            <ul class="pager">
+              <li class="next"><a href="/pengumuman">Lihat selengkapnya <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <!-- column 2 -->
+        <div class="col-sm-4">
+          <h3 class="column-heading">Berita</h3>
+
+          {% for berita in berita_data %}
+          <div class="card">
+            <div class="card-body">
+              <img src="/image/berita?imgid={{berita.key.urlsafe()}}" />
+              <div class="caption">
+                <h4>{{berita.title}}</h4>
+                <p>{{berita.content}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- Lihat selengkapnya -->
+          <nav>
+            <ul class="pager">
+              <li class="next"><a href="/berita">Lihat selengkapnya <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- column 3 -->
+        <div class="col-sm-4">
+          <h3 class="column-heading">Blog</h3>
+          <!-- Artikel #1 -->
+          <div class="card">
+            <div class="card-head">
+              <div class="person-photo">
+                <img src="/statics/images/blue-person.png" />
+              </div>
+              <div class="person-info">
+                <h5 class="title">Person Name</h5>
+                <p class="desc">Sept 1, 2016</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <img src="/statics/images/small-landscape.png" />
+              <div class="caption">
+                <h4>Title Lorem Ipsum</h4>
+                <p>content lorem ipsum content lorem ipsum content lorem ipsum</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artikel #2 -->
+          <div class="card">
+            <div class="card-head">
+              <div class="person-photo">
+                <img src="/statics/images/blue-person.png" />
+              </div>
+              <div class="person-info">
+                <h5 class="title">Person Name</h5>
+                <p class="desc">Sept 1, 2016</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <img src="/statics/images/small-landscape.png" />
+              <div class="caption">
+                <h4>Title Lorem Ipsum</h4>
+                <p>content lorem ipsum content lorem ipsum content lorem ipsum</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artikel #3 -->
+          <div class="card">
+            <div class="card-head">
+              <div class="person-photo">
+                <img src="/statics/images/blue-person.png" />
+              </div>
+              <div class="person-info">
+                <h5 class="title">Person Name</h5>
+                <p class="desc">Sept 1, 2016</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <img src="/statics/images/small-landscape.png" />
+              <div class="caption">
+                <h4>Title Lorem Ipsum</h4>
+                <p>content lorem ipsum content lorem ipsum content lorem ipsum</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Artikel #4 -->
+          <div class="card">
+            <div class="card-head">
+              <div class="person-photo">
+                <img src="/statics/images/blue-person.png" />
+              </div>
+              <div class="person-info">
+                <h5 class="title">Person Name</h5>
+                <p class="desc">Sept 1, 2016</p>
+              </div>
+            </div>
+            <div class="card-body">
+              <img src="/statics/images/small-landscape.png" />
+              <div class="caption">
+                <h4>Title Lorem Ipsum</h4>
+                <p>content lorem ipsum content lorem ipsum content lorem ipsum</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lihat selengkapnya -->
+          <nav>
+            <ul class="pager">
+              <li class="next"><a href="/blog">Lihat selengkapnya <span aria-hidden="true">&rarr;</span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+{% endblock %}
