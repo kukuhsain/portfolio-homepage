@@ -133,40 +133,6 @@ class Project(ndb.Model):
 		cls.get_by_id(id=int(id), parent=parent).key.delete()
 
 class AdminSetting(ndb.Model):
-	photo = ndb.BlobProperty()
-	name = ndb.StringProperty()
-	description = ndb.StringProperty()
-	link_names = ndb.StringProperty(repeated=True)
-	link_urls = ndb.StringProperty(repeated=True)
-
-	@classmethod
-	def update(cls, photo, name, description, link_names=[], link_urls=[]):
-		parent = ndb.Key('Admin', 'elektromedik umy')
-		if cls.get():
-			admin_setting = cls.get()
-			if photo:
-				admin_setting.photo = photo
-			if :
-				admin_setting. =
-			admin_setting.name = name
-			admin_setting.description = description
-			admin_setting.link_names = link_names
-			admin_setting.link_urls = link_urls
-			admin_setting.put()
-		else:
-			new_setting_config = cls(parent=parent, photo=photo, name=name, description=description, link_names=link_names, link_urls=link_urls)
-			new_setting_config.put()
-
-	@classmethod
-	def get(cls):
-		ancestor = ndb.Key('Admin', 'elektromedik umy')
-		return cls.query(ancestor=ancestor).get()
-
-	@classmethod
-	def get_photo(cls):
-		return cls.get().photo
-
-class AdminSetting(ndb.Model):
 	logo = ndb.BlobProperty()
 	cover_image = ndb.BlobProperty()
 	title = ndb.StringProperty()
