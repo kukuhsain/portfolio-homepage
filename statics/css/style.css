@@ -6601,11 +6601,12 @@ body {
   padding: 0;
   color: #fff;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  text-align: center; }
   .jumbotron .background-overlay {
-    background: rgba(0, 64, 40, 0.5);
-    padding-top: 144px;
-    padding-bottom: 72px; }
+    background: rgba(33, 150, 243, 0.5);
+    padding-top: 200px;
+    padding-bottom: 200px; }
   .jumbotron .title {
     color: #fff; }
 
@@ -6613,12 +6614,12 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   background-color: #fff; }
   .tabs li > a {
-    color: rgba(0, 64, 40, 0.8);
+    color: rgba(33, 150, 243, 0.8);
     border: 0;
     border-bottom: 3px solid white; }
   .tabs li > a:hover {
-    color: #004028;
-    border-bottom: 3px solid #004028;
+    color: #2196f3;
+    border-bottom: 3px solid #2196f3;
     border-radius: 0; }
 
 .column-heading {
@@ -6684,29 +6685,23 @@ body {
   .media .media-body .media-right-align {
     float: right; }
 
-.panel {
-  border: 1px solid rgba(0, 64, 40, 0.6); }
-
-.card {
-  border: 1px solid rgba(0, 64, 40, 0.6); }
-
 div.dropdown {
   display: inline;
   float: right; }
 
 .footer {
-  background-color: #004028;
-  color: #fff;
+  background-color: #e0e0e0;
+  color: #212121;
   padding-top: 50px;
   padding-bottom: 50px; }
   .footer h3 {
-    color: white; }
+    color: #212121; }
   .footer h4 {
-    color: white; }
+    color: #212121; }
   .footer h5 {
-    color: white; }
+    color: #212121; }
   .footer .footer-links {
-    color: white; }
+    color: #212121; }
 
 .padding-threshold {
   padding-top: 60px; }

@@ -4,10 +4,12 @@
 @import "paper-bootswatch";
 @import "cards";
 
-$teal: rgba(0,64,40,1);
-$teal-light: rgba(0,64,40,0.8);
-$teal-thin: rgba(0,64,40,0.5);
+$primary: #2196f3;
+$primary-light: rgba($primary, 0.8);
+$primary-thin: rgba($primary, 0.5);
 $maroon: #b0272b;
+$grey-dark: #212121;
+$grey-light: #e0e0e0;
 
 body {
 	background-color: #fff;
@@ -37,7 +39,6 @@ body {
 }
 
 .jumbotron {
-	// background-image: url("../images/prambanan.jpg");
 	background-position: 0% 50%;
   background-size: cover;
   background-repeat: no-repeat;
@@ -45,11 +46,12 @@ body {
   color: #fff;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
   margin-bottom: 0;
+	text-align: center;
 
 	.background-overlay {
-		background: $teal-thin;
-		padding-top: 144px;
-	  padding-bottom: 72px;
+		background: $primary-thin;
+		padding-top: 200px;
+	  padding-bottom: 200px;
 	}
 
 	.title {
@@ -63,14 +65,14 @@ body {
 
 	li {
 		>a {
-			color: $teal-light;
+			color: $primary-light;
 			border: 0;
 			border-bottom: 3px solid white;
 		}
 
 		>a:hover {
-			color: $teal;
-			border-bottom: 3px solid $teal;
+			color: $primary;
+			border-bottom: 3px solid $primary;
 			border-radius: 0;
 		}
 	}
@@ -171,13 +173,13 @@ body {
 	}
 }
 
-.panel {
-	border: 1px solid rgba(0,64,40,.6);
-}
-
-.card {
-	border: 1px solid rgba(0,64,40,.6);
-}
+// .panel {
+// 	border: 1px solid rgba(0,64,40,.6);
+// }
+//
+// .card {
+// 	border: 1px solid rgba(0,64,40,.6);
+// }
 
 div.dropdown {
 	display: inline;
@@ -186,25 +188,25 @@ div.dropdown {
 
 // Footer
 .footer {
-	background-color: $teal;
-	color: #fff;
+	background-color: $grey-light;
+	color: $grey-dark;
 	padding-top: 50px;
 	padding-bottom: 50px;
 
 	h3 {
-		color: white;
+		color: $grey-dark;
 	}
 
 	h4 {
-		color: white;
+		color: $grey-dark;
 	}
 
 	h5 {
-		color: white;
+		color: $grey-dark;
 	}
 
 	.footer-links {
-		color: white;
+		color: $grey-dark;
 	}
 }
 
