@@ -1,0 +1,78 @@
+{% extends "base/base_admin_header_sidebar.html" %}
+
+{% block sidecontent %}
+
+<!-- Navigation Breadcrumb -->
+          <ol class="breadcrumb">
+            <li><a href="#">Admin Panel</a></li>
+            <li class="active">Pengaturan</li>
+          </ol>
+
+          <!-- Title -->
+          <!-- <h1 class="page-header">Pengumuman</h1> -->
+          <h2 class="sub-header">Pengaturan</h2>
+
+          <!-- Content -->
+          <form class="form-horizontal" action="/admin/pengaturan" method="post" enctype="multipart/form-data">
+            <h5>Logo</h5>
+            {% if data.logo %}
+            <img style="max-height: 90px;" id="input-logo-img" src="/image/config?logo=true" class="img-responsive img-thumbnail" />
+            {% else %}
+            <img style="max-height: 90px;" id="input-logo-img" src="" class="img-responsive img-thumbnail" />
+            {% endif %}
+            <br />
+            <br />
+            <input id="input-logo-img-input" name="pengaturan-logo" type="file" accept="image/gif, image/jpeg, image/png" class="form-control">
+            <hr />
+
+            <h5>Cover Image</h5>
+            {% if data.cover_image %}
+            <img id="input-cover-img" src="/image/config?coverimg=true" width="700" class="img-responsive img-thumbnail" />
+            {% else %}
+            <img id="input-cover-img" src="" width="700" class="img-responsive img-thumbnail" />
+            {% endif %}
+            <br />
+            <br />
+            <input id="input-cover-img-input" name="pengaturan-cover-image" type="file" accept="image/gif, image/jpeg, image/png" class="form-control">
+            <hr />
+
+            <h5>Judul</h5>
+            <div class="well">
+              <input name="pengaturan-judul" type="text" placeholder="Judul" value="{{data.title}}" class="form-control input-lg">
+            </div>
+            <hr />
+
+            <h5>Tagline</h5>
+            <div class="well">
+              <input name="pengaturan-tagline" type="text" placeholder="Tagline" value="{{data.tagline}}" class="form-control">
+            </div>
+            <hr />
+
+            <h5>Link</h5>
+            <div id="add-link-button" class="btn btn-sm btn-default">Tambah Link</div>
+            <br />
+            <div id="links-input-group">
+              {% for link_name in data.link_names %}
+              <div class="form-group">
+                <label class="col-sm-1 control-label">Nama:</label>
+                <div class="col-sm-4">
+                  <input name="pengaturan-link-nama[{{loop.index-1}}]" class="form-control" placeholder="Nama" value="{{link_name}}">
+                </div>
+                <label class="col-sm-1 control-label">Link:</label>
+                <div class="col-sm-5">
+                  <input name="pengaturan-link-url[{{loop.index-1}}]" class="form-control" placeholder="Link" value="{{data.link_urls[loop.index-1]}}">
+                </div>
+                <div class="col-sm-1 delete-link-input">
+                  <div type="delete" class="btn btn-danger">X</div>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <hr />
+
+            <button type="submit" class="btn btn-primary">Simpan</button>
+            <hr />
+          </form>
+
+
+{% endblock %}

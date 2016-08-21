@@ -1,0 +1,84 @@
+{% extends "base/base_admin_header_sidebar.html" %}
+
+{% block sidecontent %}
+
+<!-- Navigation Breadcrumb -->
+          <ol class="breadcrumb">
+            <li><a href="#">Admin Panel</a></li>
+            <li class="active">Pengaturan</li>
+          </ol>
+
+          <!-- Title -->
+          <!-- <h1 class="page-header">Pengumuman</h1> -->
+          <h2 class="sub-header">Pengaturan</h2>
+
+          <!-- Modal Add -->
+          <!-- Button trigger modal -->
+          <a href="/admin/pengaturan/update" class="btn btn-primary">Ubah Pengaturan</a>
+          <hr>
+
+          <!-- Content -->
+          <h5>Logo</h5>
+          {% if data.logo %}
+          <img src="/image/config?logo=true" height="45" class="img-responsive img-thumbnail" />
+          {% else %}
+          <div class="well">
+            <h6>Belum ada logo</h6>
+          </div>
+          {% endif %}
+          <hr />
+
+          <h5>Cover Image</h5>
+          {% if data.cover_image %}
+          <img src="/image/config?coverimg=true" width="700" class="img-responsive img-thumbnail" />
+          {% else %}
+          <div class="well">
+            <h6>Belum ada cover image</h6>
+          </div>
+          {% endif %}
+          <hr />
+
+          <h5>Judul</h5>
+          {% if data.title %}
+          <div class="well">
+            <h3>{{data.title}}</h3>
+          </div>
+          {% else %}
+          <div class="well">
+            <h6>Belum ada judul</h6>
+          </div>
+          {% endif %}
+          <hr />
+
+          <h5>Tagline</h5>
+          {% if data.tagline %}
+          <div class="well">
+            <h4>{{data.tagline}}</h4>
+          </div>
+          {% else %}
+          <div class="well">
+            <h6>Belum ada tagline</h6>
+          </div>
+          {% endif %}
+          <hr />
+
+          <h5>Link</h5>
+          {% if data.link_names %}
+          <ul>
+            <!-- for link_name in data.link_names-->
+            {% for link_name in data.link_names %}
+            <li>
+              <h6>{{link_name}}</h6>
+              <h7>{{data.link_urls[loop.index-1]}}</h7>
+            </li>
+            {% endfor %}
+          </ul>
+          {% else %}
+          <div class="well">
+            <h6>Belum ada link</h6>
+          </div>
+          {% endif %}
+          <hr />
+
+
+{% endblock %}

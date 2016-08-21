@@ -1,0 +1,128 @@
+{% extends "base/base_admin_header_sidebar.html" %}
+
+{% block sidecontent %}
+
+<!-- Navigation Breadcrumb -->
+          <ol class="breadcrumb">
+            <li><a href="#">Admin Panel</a></li>
+            <li class="active">Laboratorium</li>
+          </ol>
+
+          <!-- Title -->
+          <!-- <h1 class="page-header">Pengumuman</h1> -->
+          <h2 class="sub-header">Laboratorium</h2>
+
+          <!-- Modal Add -->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal"
+              data-operation="add">
+            Tambah Laboratorium
+          </button>
+          <hr>
+
+          <!-- Content -->
+
+          {% for item in data %}
+          <div class="card">
+            <div class="card-body">
+              <img src="/image/{{tag}}?imgid={{item.key.urlsafe()}}" width="700" />
+              <div class="caption">
+                <h3 class="caption-heading">{{item['name']}}</h3>
+                <p class="caption-action-right">
+                  <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu">
+                      <li>
+                        <!-- Update Modal -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#inputModal"
+                            data-operation="update"
+                            data-laboratorium-id="{{item.key.id()}}"
+                            data-laboratorium-image="/image/{{tag}}?imgid={{item.key.urlsafe()}}"
+                            data-laboratorium-nama="{{item['name']}}"
+                            data-laboratorium-deskripsi="{{item['description']}}">
+                          Update
+                        </button>
+                      </li>
+                      <li role="separator" class="divider"></li>
+                      <li>
+                        <!-- Delete Modal -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#deleteModal"
+                            data-laboratorium-id="{{item.key.id()}}"
+                            data-laboratorium-nama="{{item['name']}}">
+                          Delete
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </p>
+                <p>{{item['description']}}</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <!-- updateModal -->
+            <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{tag}}</h4>
+                  </div>
+                  <form id="modal-form" method="post" action="/admin/{{tag}}" enctype="multipart/form-data">
+                    <div class="modal-body">
+                      <input type="hidden" name="{{tag}}-id" id="input-{{tag}}-id">
+                      <div class="form-group">
+                        <label for="{{tag}}-image" class="control-label">Foto:</label>
+                        <p align="middle">
+                          <img id="input-{{tag}}-img" src="/statics/images/small-landscape.png" width="500">
+                        </p>
+                        <input id="input-{{tag}}-img-input" name="{{tag}}-image" type="file" accept="image/gif, image/jpeg, image/png" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="{{tag}}-nama" class="control-label">Nama:</label>
+                        <input name="{{tag}}-nama" type="text" class="form-control" placeholder="Nama Laboratorium" id="input-{{tag}}-nama">
+                      </div>
+                      <div class="form-group">
+                        <label for="{{tag}}-deskripsi" class="control-label">Deskripsi:</label>
+                        <textarea name="{{tag}}-deskripsi" class="form-control" placeholder="Deskripsi Laboratorium" id="input-{{tag}}-deskripsi"></textarea>
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                      <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- deleteModal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+                  </div>
+                  <form method="post" action="/admin/{{tag}}/delete">
+                    <div class="modal-body">
+                      <input type="hidden" name="{{tag}}-id" id="delete-{{tag}}-id">
+                      <p>Apa anda yakin untuk menghapus {{tag}} <strong id="delete-{{tag}}-nama">ini</strong> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                      <button type="submit" class="btn btn-primary">Hapus</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base/base.html" %}
+
+{% block body %}
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">
+            <img class="img-brand" alt="Brand" src="/statics/images/logo-umy-1.png">
+          </a>
+        </div>
+        <div class="navbar-right">
+          <p class="navbar-text">
+            <a href="/adminlogout" class="navbar-link">
+              Logout
+            </a>
+          </p>
+        </div>
+      </div>
+    </nav>
+
+    <!-- <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </nav> -->
+
+    <!-- Navigation and Contents -->
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Side Navigation -->
+        <div class="col-sm-3 col-md-2 sidebar">
+          <h4>Admin Panel</h4>
+          <br>
+          <ul class="nav nav-sidebar">
+            <li class="{{status['dosen']}}"><a href="/admin/dosen">Dosen</a></li>
+            <li class="{{status['mahasiswa']}}"><a href="/admin/mahasiswa">Mahasiswa</a></li>
+            <li class="{{status['matakuliah']}}"><a href="/admin/matakuliah">Mata Kuliah</a></li>
+            <li class="{{status['laboratorium']}}"><a href="/admin/laboratorium">Laboratorium</a></li>
+            <li class="{{status['jurnal']}}"><a href="/admin/jurnal">Jurnal</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="{{status['pengumuman']}}"><a href="/admin/pengumuman">Pengumuman</a></li>
+            <li class="{{status['berita']}}"><a href="/admin/berita">Berita</a></li>
+            <!-- <li class="{{status['blog']}}"><a href="/admin/blog"><span class="glyphicon glyphicon-comment"></span> Blog</a></li> -->
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li class="{{status['pengaturan']}}"><a href="/admin/pengaturan">Pengaturan</a></li>
+          </ul>
+          <!-- <ul class="nav nav-sidebar">
+            <li><a href="/admin/header"><span class="glyphicon glyphicon-circle-arrow-up"></span> Header</a></li>
+            <li><a href="/admin/footer"><span class="glyphicon glyphicon-circle-arrow-down"></span> Footer</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="/admin/histori"><span class="glyphicon glyphicon-time"></span> Histori</a></li>
+          </ul> -->
+        </div>
+
+        <!-- Contents -->
+        <div class="col-sm-9 col-md-10 main">
+
+          {% block sidecontent %}
+          {% endblock %}
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- <script src="js/bootstrap.min.js"></script> -->
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<h3>Register Page</h3>
+<form method="POST">
+	<p>Username: <input name="admin-username" required></input></p>
+	<p>Password: <input type="password" name="admin-password" required></input></p>
+	<p>Password again: <input type="password" name="admin-password-again" required></input></p>
+	<p>Email: <input type="email" name="admin-email" required></input></p>
+	<p>Secret Password: <input type="password" name="admin-secret-password"></input></p>
+	<p style="color: red">{{error}}</p>
+	<p style="color: blue">{{success}}</p>
+	<button type="submit">Register</button>
+</form>

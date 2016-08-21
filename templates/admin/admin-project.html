@@ -1,0 +1,120 @@
+{% extends "base/base_admin_header_sidebar.html" %}
+
+{% block sidecontent %}
+
+<!-- Navigation Breadcrumb -->
+          <ol class="breadcrumb">
+            <li><a href="#">Admin Panel</a></li>
+            <li class="active">Pengumuman</li>
+          </ol>
+
+          <!-- Title -->
+          <!-- <h1 class="page-header">Pengumuman</h1> -->
+          <h2 class="sub-header">Pengumuman</h2>
+
+          <!-- Modal Add -->
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#inputModal"
+              data-operation="add">
+            Tambah Pengumuman
+          </button>
+          <hr>
+
+          <!-- Content -->
+          <div class="panel">
+            <ul class="list-group">
+              {% for item in data %}
+              <li class="list-group-item">
+
+                <h5 class="list-group-item-heading">{{item.content}}</h5>
+                <p class="list-group-item-right-align">
+                  <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu">
+                      <li>
+                        <!-- Update Modal -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#inputModal"
+                            data-operation="update"
+                            data-pengumuman-id="{{item.key.id()}}"
+                            data-pengumuman-isi="{{item.content}}">
+                          Update
+                        </button>
+                      </li>
+                      <li role="separator" class="divider"></li>
+                      <li>
+                        <!-- Delete Modal -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#deleteModal"
+                            data-pengumuman-id="{{item.key.id()}}"
+                            data-pengumuman-isi="{{item.content}}">
+                          Delete
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                </p>
+                <p class="list-group-item-text">Diumumkan pada {{item.created_date.strftime('%B %d, %Y')}}</p>
+
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- updateModal -->
+            <div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">{{tag}}</h4>
+                  </div>
+                  <form id="modal-form" method="post" action="/admin/{{tag}}" enctype="multipart/form-data">
+                    <div class="modal-body">
+                      <input type="hidden" name="{{tag}}-id" id="input-{{tag}}-id">
+                      <div class="form-group">
+                        <label for="{{tag}}-isi" class="control-label">Isi:</label>
+                        <input name="{{tag}}-isi" type="text" class="form-control" placeholder="Isi Pengumuman" id="input-{{tag}}-isi">
+                      </div>
+
+                      <!-- <div class="form-group">
+                        <label for="message-text" class="control-label">Message:</label>
+                        <textarea class="form-control" id="message-text"></textarea>
+                      </div> -->
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                      <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- deleteModal -->
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Konfirmasi</h4>
+                  </div>
+                  <form method="post" action="/admin/{{tag}}/delete">
+                    <div class="modal-body">
+                      <input type="hidden" name="{{tag}}-id" id="delete-{{tag}}-id">
+                      <p>Apa anda yakin untuk menghapus {{tag}} <strong id="delete-{{tag}}-nama">ini</strong> ?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                      <button type="submit" class="btn btn-primary">Hapus</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+{% endblock %}
