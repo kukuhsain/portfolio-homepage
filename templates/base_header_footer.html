@@ -1,4 +1,4 @@
-{% extends "base/base.html" %}
+{% extends "base.html" %}
 
 {% block body %}
 
@@ -7,7 +7,7 @@
     <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="/">
-          <img class="img-brand" alt="Brand" src="/statics/images/blue-person.png">
+          <img class="img-brand" alt="Brand" src="/statics/images/logoandname.png">
         </a>
       </div>
       <div class="navbar-right">
@@ -26,7 +26,7 @@
       <div class="row">
         <!-- Logo -->
         <div class="col-sm-3">
-          <img class="center-block" src="/statics/images/red-person.png">
+          <img class="center-block" src="/statics/images/logo.png">
         </div>
         <!-- Address -->
         <div class="col-sm-5">
@@ -36,9 +36,9 @@
         </div>
         <div class="col-sm-4">
           <br>
-          {% for link_name in config_data.link_names %}
-          <p><a class="footer-links" href="{{config_data.link_urls[loop.index-1]}}">{{link_name}}</a></p>
-          {% endfor %}
+
+          <!-- <p><a class="footer-links" href=""></a></p> -->
+
         </div>
       </div>
     </div>
